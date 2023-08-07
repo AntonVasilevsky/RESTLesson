@@ -2,6 +2,7 @@ package com.anton.rest.services;
 
 import com.anton.rest.models.Person;
 import com.anton.rest.repositories.PeopleRepository;
+import com.anton.rest.util.PersonNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +21,10 @@ public class PeopleService {
     }
 
     public Person findOne(int id) {
-        return peopleRepository.findById(id).orElseThrow();
+        return peopleRepository.findById(id).orElseThrow(PersonNotFoundException::new);
+    }
+    @Transactional
+    public void create(Person person) {
+        peopleRepository.save(person);
     }
 }
