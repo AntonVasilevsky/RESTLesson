@@ -11,7 +11,7 @@ public class PersonErrorResponse {
 
 
 
-    public String message() {
+    public String getMessage() {
         return message;
     }
 
@@ -26,4 +26,6 @@ public class PersonErrorResponse {
     public void setTimeStamp(Long timeStamp) {
         this.timestamp = timeStamp;
     }
+
+
 }

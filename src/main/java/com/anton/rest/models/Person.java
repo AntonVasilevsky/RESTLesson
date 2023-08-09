@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
+import java.time.LocalDateTime;
+
 
 @Entity
 @Table(name = "Person")
@@ -31,6 +33,13 @@ public class Person {
     @NotEmpty(message = "Email should not be empty")
 
     private String email;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+    @Column(name = "updatedAt")
+    private LocalDateTime updatedAt;
+    @Column(name = "edited_who")
+    @NotEmpty
+    private String editedWho;
 
     public Person() {
 
@@ -73,12 +82,40 @@ public class Person {
         this.email = email;
     }
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getCreatedWho() {
+        return editedWho;
+    }
+
+    public void setCreatedWho(String createdWho) {
+        this.editedWho = createdWho;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
+                ", email='" + email + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", editedWho='" + editedWho + '\'' +
                 '}';
     }
 }
